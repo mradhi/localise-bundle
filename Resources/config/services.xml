@@ -1,0 +1,69 @@
+<!--
+  ~ This file is part of the CosaVostra, Localise.biz bundle.
+  ~
+  ~ (c) Mohamed Radhi GUENNICHI <rg@mate.tn> <+216 50 711 816>
+  ~
+  ~ For the full copyright and license information, please view the LICENSE
+  ~ file that was distributed with this source code.
+  -->
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="CosaVostra\LocaliseBundle\Http\Client" public="false">
+            <argument key="$exportKey" type="string">%env(LOCALIZE_EXPORT_KEY)%</argument>
+            <argument key="$client" type="service" id="http_client"/>
+        </service>
+        <service id="CosaVostra\LocaliseBundle\Http\Request" public="false">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Client"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"
+                 public="false">
+            <argument type="service" id="parameter_bag"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Exporter\Registry" public="false"/>
+
+        <service id="CosaVostra\LocaliseBundle\Exporter\YamlExporter">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
+            <argument type="service" id="filesystem"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
+            <tag name="localise.exporter"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Exporter\XlfExporter" public="false">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
+            <argument type="service" id="filesystem"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
+            <tag name="localise.exporter"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Exporter\PhpExporter">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
+            <argument type="service" id="filesystem"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
+            <tag name="localise.exporter"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Helper\TranslationPurger">
+            <argument type="service" id="parameter_bag"/>
+            <argument type="service" id="filesystem"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\LocaliseManager">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Exporter\Registry"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>
+        </service>
+
+        <service id="CosaVostra\LocaliseBundle\Command\TranslationExportCommand">
+            <argument type="service" id="CosaVostra\LocaliseBundle\Exporter\Registry"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>
+            <tag name="console.command"/>
+        </service>
+    </services>
+</container>
