@@ -63,7 +63,7 @@ to access to the command:
 $ php bin/console localise:translation:export --extension=yaml --purge
 ```
 
-The output will be something like below:
+The output will be similar to below:
 
 ```console                                                                    
  ----------------- ------ ------------ -------------- 
