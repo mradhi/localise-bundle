@@ -78,6 +78,11 @@ The output will be similar to below:
 **NOTE:** Don't forget to clear the cache of your application after running the command,
 and consider using the right environment option, in your prod environment you should run:
 
+**NOTE:** The following extensions are supported:
+- Yaml
+- PHP
+- XLF 
+
 ```console
 $ php bin/console --env=prod localise:translation:export --extension=yaml --purge
 ```
