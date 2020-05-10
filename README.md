@@ -54,7 +54,7 @@ LOCALIZE_EXPORT_KEY=XXXXXXXXXXXXXXX
 ```
 
 Usage
-----------------------------------
+=====
 
 This bundle is very useful to export translation files from Localise.biz, after installation you'll be able
 to access to the command:
@@ -96,7 +96,7 @@ public function action(LocaliseManager $localiseManager): Response
     
     $localiseManager->export($extension, $purge);
     
-    // Clearing cache here ...
+    // Clear the cache manually here ...
 
     return new Response('Translations exported.');
 }
