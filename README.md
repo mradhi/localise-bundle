@@ -49,7 +49,7 @@ Finally, update your `.env` file by setting the Localise API key of your account
 
 ```dotenv
 ###> cosavostra/localise-bundle ###
-LOCALIZE_EXPORT_KEY=XXXXXXXXXXXXXXX
+LOCALISE_EXPORT_KEY=XXXXXXXXXXXXXXX
 ###> cosavostra/localise-bundle ###
 ```
 
