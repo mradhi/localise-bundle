@@ -16,7 +16,7 @@ use CosaVostra\LocaliseBundle\DependencyInjection\Compiler\ExporterRegistryPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class LocaliseBundle extends Bundle
+class CosaVostraLocaliseBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

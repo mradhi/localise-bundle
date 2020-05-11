@@ -39,7 +39,7 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    CosaVostra\LocaliseBundle\LocaliseBundle::class => ['all' => true],
+    CosaVostra\LocaliseBundle\CosaVostraLocaliseBundle::class => ['all' => true],
 ];
 ```
 
