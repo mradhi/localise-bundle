@@ -10,9 +10,9 @@
 
 declare(strict_types=1);
 
-namespace CosaVostra\LocaliseBundle\Exporter;
+namespace CosaVostra\LocaliseBundle\Importer;
 
-interface ExporterInterface
+interface ImporterInterface
 {
     /**
      * The exporter file extension.
@@ -29,5 +29,5 @@ interface ExporterInterface
      *
      * @return string The full path of the translation file.
      */
-    public function export(string $locale, string $tag): string;
+    public function import(string $locale, string $tag): string;
 }

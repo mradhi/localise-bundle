@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace CosaVostra\LocaliseBundle\DependencyInjection;
 
-use CosaVostra\LocaliseBundle\Exporter\ExporterInterface;
+use CosaVostra\LocaliseBundle\Importer\ImporterInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -25,8 +25,8 @@ class CosaVostraLocaliseExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $container->registerForAutoconfiguration(ExporterInterface::class)
-            ->addTag('localise.exporter');
+        $container->registerForAutoconfiguration(ImporterInterface::class)
+            ->addTag('localise.importer');
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

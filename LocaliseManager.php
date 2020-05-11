@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace CosaVostra\LocaliseBundle;
 
-use CosaVostra\LocaliseBundle\Exporter\Exception\InvalidExporterException;
-use CosaVostra\LocaliseBundle\Exporter\Registry;
+use CosaVostra\LocaliseBundle\Importer\Exception\InvalidExporterException;
+use CosaVostra\LocaliseBundle\Importer\Registry;
 use CosaVostra\LocaliseBundle\Helper\TranslationPurger;
 use CosaVostra\LocaliseBundle\Http\Request;
 
@@ -47,7 +47,7 @@ class LocaliseManager
      *
      * @throws InvalidExporterException
      */
-    public function export(string $extension = 'yaml', bool $purge = false): void
+    public function import(string $extension = 'yaml', bool $purge = false): void
     {
         $exporter = $this->exporterRegistry->get($extension);
 
@@ -57,7 +57,7 @@ class LocaliseManager
 
         foreach ($this->localiseRequest->getTags() as $tag) {
             foreach ($this->localiseRequest->getLocales() as $locale) {
-                $exporter->export($locale['code'], $tag);
+                $exporter->import($locale['code'], $tag);
             }
         }
     }

@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace CosaVostra\LocaliseBundle\Exporter;
+namespace CosaVostra\LocaliseBundle\Importer;
 
 use CosaVostra\LocaliseBundle\Helper\FilenameGenerator;
 use CosaVostra\LocaliseBundle\Http\Request;
 use Symfony\Component\Filesystem\Filesystem;
 
-class YamlExporter implements ExporterInterface
+class YamlImporter implements ImporterInterface
 {
     /**
      * @var Request
@@ -51,7 +51,7 @@ class YamlExporter implements ExporterInterface
     /**
      * @inheritDoc
      */
-    public function export(string $locale, string $tag): string
+    public function import(string $locale, string $tag): string
     {
         $this->filesystem->dumpFile(
             $path = $this->filenameGenerator->getFilename($tag, $locale, static::getExtension()),

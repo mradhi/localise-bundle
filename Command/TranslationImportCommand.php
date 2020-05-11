@@ -12,8 +12,8 @@ declare(strict_types=1);
 
 namespace CosaVostra\LocaliseBundle\Command;
 
-use CosaVostra\LocaliseBundle\Exporter\Exception\InvalidExporterException;
-use CosaVostra\LocaliseBundle\Exporter\Registry;
+use CosaVostra\LocaliseBundle\Importer\Exception\InvalidExporterException;
+use CosaVostra\LocaliseBundle\Importer\Registry;
 use CosaVostra\LocaliseBundle\Helper\TranslationPurger;
 use CosaVostra\LocaliseBundle\Http\Request;
 use Symfony\Component\Console\Command\Command;
@@ -69,7 +69,7 @@ class TranslationImportCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         try {
-            $exporter = $this->registry->get($input->getOption('extension') ?? 'yaml');
+            $importer = $this->registry->get($input->getOption('extension') ?? 'yaml');
         } catch (InvalidExporterException $exception) {
             $io->error($exception->getMessage());
             return 1;
@@ -84,7 +84,7 @@ class TranslationImportCommand extends Command
 
         foreach ($this->request->getTags() as $tag) {
             foreach ($this->request->getLocales() as $locale) {
-                $exporter->export($locale['code'], $tag);
+                $importer->import($locale['code'], $tag);
                 // TODO: print information about the exported file path?
             }
         }

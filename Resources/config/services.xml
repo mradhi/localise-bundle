@@ -24,27 +24,27 @@
             <argument type="service" id="parameter_bag"/>
         </service>
 
-        <service id="CosaVostra\LocaliseBundle\Exporter\Registry" public="false"/>
+        <service id="CosaVostra\LocaliseBundle\Importer\Registry" public="false"/>
 
-        <service id="CosaVostra\LocaliseBundle\Exporter\YamlExporter">
+        <service id="CosaVostra\LocaliseBundle\Importer\YamlImporter">
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="filesystem"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
-            <tag name="localise.exporter"/>
+            <tag name="localise.importer"/>
         </service>
 
-        <service id="CosaVostra\LocaliseBundle\Exporter\XlfExporter" public="false">
+        <service id="CosaVostra\LocaliseBundle\Importer\XlfImporter" public="false">
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="filesystem"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
-            <tag name="localise.exporter"/>
+            <tag name="localise.importer"/>
         </service>
 
-        <service id="CosaVostra\LocaliseBundle\Exporter\PhpExporter">
+        <service id="CosaVostra\LocaliseBundle\Importer\PhpImporter">
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="filesystem"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\FilenameGenerator"/>
-            <tag name="localise.exporter"/>
+            <tag name="localise.importer"/>
         </service>
 
         <service id="CosaVostra\LocaliseBundle\Helper\TranslationPurger">
@@ -53,13 +53,13 @@
         </service>
 
         <service id="CosaVostra\LocaliseBundle\LocaliseManager">
-            <argument type="service" id="CosaVostra\LocaliseBundle\Exporter\Registry"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Importer\Registry"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>
         </service>
 
         <service id="CosaVostra\LocaliseBundle\Command\TranslationImportCommand">
-            <argument type="service" id="CosaVostra\LocaliseBundle\Exporter\Registry"/>
+            <argument type="service" id="CosaVostra\LocaliseBundle\Importer\Registry"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>
             <tag name="console.command"/>

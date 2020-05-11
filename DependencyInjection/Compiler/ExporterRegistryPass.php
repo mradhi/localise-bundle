@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace CosaVostra\LocaliseBundle\DependencyInjection\Compiler;
 
-use CosaVostra\LocaliseBundle\Exporter\Registry;
+use CosaVostra\LocaliseBundle\Importer\Registry;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -24,7 +24,7 @@ class ExporterRegistryPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $exporters = $container->findTaggedServiceIds('localise.exporter');
+        $exporters = $container->findTaggedServiceIds('localise.importer');
         $registry = $container->getDefinition(Registry::class);
 
         foreach ($exporters as $class => $attrs) {

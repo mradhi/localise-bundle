@@ -10,23 +10,23 @@
 
 declare(strict_types=1);
 
-namespace CosaVostra\LocaliseBundle\Exporter;
+namespace CosaVostra\LocaliseBundle\Importer;
 
-use CosaVostra\LocaliseBundle\Exporter\Exception\InvalidExporterException;
+use CosaVostra\LocaliseBundle\Importer\Exception\InvalidExporterException;
 
 class Registry
 {
     /**
-     * @var ExporterInterface[]
+     * @var ImporterInterface[]
      */
     protected $exporters = [];
 
-    public function add(ExporterInterface $exporter): void
+    public function add(ImporterInterface $exporter): void
     {
         $this->exporters[$exporter->getExtension()] = $exporter;
     }
 
-    public function get(string $extension): ExporterInterface
+    public function get(string $extension): ImporterInterface
     {
         if (!array_key_exists($extension, $this->exporters)) {
             throw new InvalidExporterException("Exporter with the extension \"$extension\" is not supported.");

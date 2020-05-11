@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace CosaVostra\LocaliseBundle\Exporter\Exception;
+namespace CosaVostra\LocaliseBundle\Importer\Exception;
 
 use InvalidArgumentException;
 

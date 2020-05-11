@@ -10,13 +10,13 @@
 
 declare(strict_types=1);
 
-namespace CosaVostra\LocaliseBundle\Exporter;
+namespace CosaVostra\LocaliseBundle\Importer;
 
 use CosaVostra\LocaliseBundle\Helper\FilenameGenerator;
 use CosaVostra\LocaliseBundle\Http\Request;
 use Symfony\Component\Filesystem\Filesystem;
 
-class PhpExporter implements ExporterInterface
+class XlfImporter implements ImporterInterface
 {
     /**
      * @var Request
@@ -45,17 +45,17 @@ class PhpExporter implements ExporterInterface
      */
     public static function getExtension(): string
     {
-        return 'php';
+        return 'xlf';
     }
 
     /**
      * @inheritDoc
      */
-    public function export(string $locale, string $tag): string
+    public function import(string $locale, string $tag): string
     {
         $this->filesystem->dumpFile(
             $path = $this->filenameGenerator->getFilename($tag, $locale, static::getExtension()),
-            $this->request->getTranslationContent($locale, $tag, 'phps', 'symfony')
+            $this->request->getTranslationContent($locale, $tag, 'xlf', 'symfony')
         );
 
         return $path;

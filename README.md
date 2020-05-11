@@ -56,7 +56,7 @@ LOCALISE_EXPORT_KEY=XXXXXXXXXXXXXXX
 Usage
 =====
 
-This bundle is very useful to export translation files from Localise.biz, after installation you'll be able
+This bundle is very useful to import translation files from Localise.biz, after installation you'll be able
 to access to the command:
 
 ```console
@@ -84,10 +84,10 @@ and consider using the right environment option, in your prod environment you sh
 - XLF 
 
 ```console
-$ php bin/console --env=prod localise:translation:export --extension=yaml --purge
+$ php bin/console --env=prod localise:translation:import --extension=yaml --purge
 ```
 
-You can also use the `CosaVostra\LocaliseBundle\LocaliseManager` service to export translations manually
+You can also use the `CosaVostra\LocaliseBundle\LocaliseManager` service to import translations manually
 (for example in a controller) like below:
 
 ```php
@@ -99,11 +99,11 @@ public function action(LocaliseManager $localiseManager): Response
     $extension = 'yaml';
     $purge = true; // This flag should be "TRUE" to purge translation directory and remove old files.
     
-    $localiseManager->export($extension, $purge);
+    $localiseManager->import($extension, $purge);
     
     // Clear the cache manually here ...
 
-    return new Response('Translations exported.');
+    return new Response('Translations imported.');
 }
 ```
 
