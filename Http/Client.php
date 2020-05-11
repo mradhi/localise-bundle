@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace CosaVostra\LocaliseBundle\Http;
 
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -27,10 +28,10 @@ class Client
      */
     protected $client;
 
-    public function __construct(string $exportKey, HttpClientInterface $client)
+    public function __construct(string $exportKey)
     {
         $this->exportKey = $exportKey;
-        $this->client    = $client;
+        $this->client    = HttpClient::create();
     }
 
     /**

@@ -14,7 +14,6 @@
     <services>
         <service id="CosaVostra\LocaliseBundle\Http\Client" public="false">
             <argument key="$exportKey" type="string">%env(LOCALISE_EXPORT_KEY)%</argument>
-            <argument key="$client" type="service" id="http_client"/>
         </service>
         <service id="CosaVostra\LocaliseBundle\Http\Request" public="false">
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Client"/>
