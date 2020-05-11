@@ -58,7 +58,7 @@
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>
         </service>
 
-        <service id="CosaVostra\LocaliseBundle\Command\TranslationExportCommand">
+        <service id="CosaVostra\LocaliseBundle\Command\TranslationImportCommand">
             <argument type="service" id="CosaVostra\LocaliseBundle\Exporter\Registry"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Http\Request"/>
             <argument type="service" id="CosaVostra\LocaliseBundle\Helper\TranslationPurger"/>

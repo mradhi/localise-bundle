@@ -60,7 +60,7 @@ This bundle is very useful to export translation files from Localise.biz, after 
 to access to the command:
 
 ```console
-$ php bin/console localise:translation:export --extension=yaml --purge
+$ php bin/console localise:translation:import --extension=yaml --purge
 ```
 
 The output will be similar to below:
@@ -72,7 +72,7 @@ The output will be similar to below:
   English US        en     3            0             
   French (France)   fr     3            0             
  ----------------- ------ ------------ --------------                                                                                                                
- [OK] The translations was successfully exported.   
+ [OK] The translations was successfully imported.   
 ```
 
 **NOTE:** Don't forget to clear the cache of your application after running the command,

@@ -22,9 +22,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class TranslationExportCommand extends Command
+class TranslationImportCommand extends Command
 {
-    protected static $defaultName = 'localise:translation:export';
+    protected static $defaultName = 'localise:translation:import';
 
     /**
      * @var Registry
@@ -56,7 +56,7 @@ class TranslationExportCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Export translations from localise.biz')
+            ->setDescription('Import translations from localise.biz')
             ->addOption('extension', 'ext', InputOption::VALUE_OPTIONAL, 'The extension of the translation file (yaml, php, xlf)')
             ->addOption('purge', 'p', InputOption::VALUE_NONE, 'Purge translation directory (remove old translations).');
     }
@@ -80,7 +80,7 @@ class TranslationExportCommand extends Command
             $this->purger->purge();
         }
 
-        $io->comment('Exporting translations from localise.biz...');
+        $io->comment('Importing translations from localise.biz...');
 
         foreach ($this->request->getTags() as $tag) {
             foreach ($this->request->getLocales() as $locale) {
@@ -91,7 +91,7 @@ class TranslationExportCommand extends Command
 
         $this->printStats($io);
 
-        $io->success('The translations was successfully exported.');
+        $io->success('The translations was successfully imported.');
 
         return 0;
     }
